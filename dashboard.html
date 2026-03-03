@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft Pink Bio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ffb6d9;
+  --soft-pink:#ffd6ec;
+  --rose:#ff8ecb;
+  --purple:#c084fc;
+  --glass:rgba(255,255,255,0.35);
+  --text:#6b4c63;
+  --shadow:0 10px 25px rgba(255,105,180,0.15);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,var(--pink),var(--soft-pink));
+  min-height:100vh;
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+}
+
+.container{
+  width:100%;
+  max-width:420px;
+  padding:40px 20px 60px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+}
+
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  padding:5px;
+  margin:auto;
+  background:linear-gradient(135deg,var(--rose),var(--purple));
+  box-shadow:var(--shadow);
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  display:block;
+}
+
+.name{
+  margin-top:18px;
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+  background:linear-gradient(90deg,var(--rose),var(--purple));
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+}
+
+.tagline{
+  margin-top:6px;
+  font-size:0.9rem;
+  opacity:0.8;
+}
+
+/* CARD */
+.card{
+  margin-top:25px;
+  padding:20px;
+  border-radius:20px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow);
+  text-align:center;
+  font-size:0.9rem;
+}
+
+/* BUTTON */
+.button{
+  margin-top:15px;
+  padding:16px;
+  border-radius:30px;
+  background:white;
+  text-align:center;
+  font-weight:500;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  box-shadow:var(--shadow);
+  text-decoration:none;
+  color:var(--text);
+  display:block;
+}
+
+.button:hover{
+  transform:translateY(-3px);
+  background:var(--soft-pink);
+}
+
+/* ABOUT */
+.about-title{
+  margin-top:35px;
+  font-family:'Dancing Script',cursive;
+  font-size:1.6rem;
+}
+
+.about-box{
+  margin-top:10px;
+  padding:18px;
+  border-radius:20px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+}
+
+.about-content{
+  margin-top:14px;
+  font-size:0.85rem;
+  line-height:1.6;
+  min-height:60px;
+  white-space: pre-line;
+}
+
+.footer{
+  margin-top:40px;
+  text-align:center;
+  font-size:0.75rem;
+  opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<section class="hero">
+  <div class="avatar">
+    <img src="https://i.pravatar.cc/300?img=47" alt="Profile">
+  </div>
+
+  <div class="name">ika</div>
+  <div class="tagline">Make every mistake an opportunity to grow 🌸</div>
+
+  <div class="card">
+    Graceful, kind, and effortlessly beautiful.🥰
+    Loves exploring delicious street food and binge-watching favorite K-dramas & C-dramas.💖
+  </div>
+</section>
+
+<a href="https://www.instagram.com/itsikak?igsh=aWR4d3EzN3hkbzFq" target="_blank" class="button">📸 Instagram</a>
+
+<a href="https://www.tiktok.com/@itsikak?_r=1&_t=ZS-94NG2xbrcuX" target="_blank" class="button">🎵 TikTok</a>
+
+<a href="https://maps.app.goo.gl/P2WfpyfHqcwUg6Ck7?g_st=aw" target="_blank" class="button">📍 Peta</a>
+
+<div class="about-title">Tentang Aku 💫</div>
+<div class="about-box" onclick="toggleAbout()">
+  Klik untuk tentang aku 🌸
+  <div class="about-content" id="aboutText"></div>
+</div>
+
+<div class="footer">
+  made with 💗 by cowok e
+</div>
+
+</div>
+
+<script>
+const aboutMessage = `Halo semuanya! Aku Ika 👋✨
+
+Asalku dari Semarang, lahir tahun 2006. Sekarang lagi menempuh pendidikan di Universitas Dian Nuswantoro 🎓
+
+Aku pecinta jajanan sejati—apalagi papeda, favorit banget! 🍜💖
+
+Mungkin segitu dulu tentang aku. Kalau mau tau tentang aku, langsung aja kepoin Instagram atau TikTok aku ya 😉
+
+Bye bye 🤗✨`;
+
+let opened = false;
+
+function toggleAbout(){
+  const element = document.getElementById("aboutText");
+
+  if(!opened){
+    element.innerHTML = "";
+    typeWriter(element, aboutMessage, 25);
+    opened = true;
+  }else{
+    element.innerHTML = "";
+    opened = false;
+  }
+}
+
+function typeWriter(el, text, speed){
+  let i = 0;
+  function typing(){
+    if(i < text.length){
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+</script>
+
+</body>
+</html>
